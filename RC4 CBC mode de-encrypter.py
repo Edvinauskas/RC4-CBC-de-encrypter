@@ -133,9 +133,7 @@ class lab3(QWidget):
         
     def GUI(self):
         self.atidaryti_teksta = QPushButton("Atidaryti teksta")
-        self.atidaryti_teksta.setFixedWidth(100)
-        self.failas_Label = QLabel("Failas: ")
-        self.failas_Label.setFixedWidth(30)
+        self.atidaryti_teksta.setFixedWidth(120)
         self.failo_pavadinimas_Label = QLabel("(failas)")
         
         self.uzk_uzkuoduoti_PushButton = QPushButton("Uzkuoduoti")
@@ -164,8 +162,7 @@ class lab3(QWidget):
         
         atidaryti_faila_Grid = QGridLayout()
         atidaryti_faila_Grid.addWidget(self.atidaryti_teksta, 1, 0)
-        atidaryti_faila_Grid.addWidget(self.failas_Label, 1, 1)
-        atidaryti_faila_Grid.addWidget(self.failo_pavadinimas_Label, 1, 2)
+        atidaryti_faila_Grid.addWidget(self.failo_pavadinimas_Label, 1, 1)
         
         uzk_Grid = QGridLayout()
         uzk_Grid.addWidget(self.uzk_uzkuoduoti_PushButton, 1, 0)
