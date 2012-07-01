@@ -95,6 +95,14 @@ class MainWindow(QWidget):
         text = f_open.read()
         self.encrypt_text_plain_PlainTextEdit.setPlainText(text)
         f_open.close()
+
+    def atidaryti_faila(self):
+        failo_pav = QFileDialog.getOpenFileName(self, 'Open File', '.')
+        self.failo_pavadinimas_Label.setText(failo_pav)
+        f_atidaryti = open(failo_pav) 
+        tekstas = f_atidaryti.read()
+        self.uzk_text_plain_QPlainTextEdit.setPlainText(tekstas)
+        f_atidaryti.close()
     
     def encrypt_text(self):
         bits = self.encrypt_bits_LineEdit.displayText()
@@ -127,6 +135,9 @@ class MainWindow(QWidget):
             
     def error(self):
             QMessageBox.critical(self, "Error", "Something has gone terribly terribly wrong! :(")
+
+    def klaida(self):
+        QMessageBox.critical(self, "Something has gone terribly terribly wrong! :(", QMessageBox.Ok)
     
     def quit(self):
         sys.exit()
@@ -159,6 +170,34 @@ class MainWindow(QWidget):
         self.dencrypt_text_crypt_PlainTextEdit.setReadOnly(True)
         
         self.quit_PushButton =  QPushButton("Quit")    
+
+        self.atidaryti_teksta = QPushButton("Open File")
+        self.atidaryti_teksta.setFixedWidth(120)
+        self.failo_pavadinimas_Label = QLabel("(File Name)")
+        
+        self.uzk_uzkuoduoti_PushButton = QPushButton("Encrypt")
+        self.uzk_raktas_Label = QLabel("Key: ")
+        self.uzk_raktas_LineEdit = QLineEdit()
+        self.uzk_bitai_Label = QLabel("Bits: ")
+        self.uzk_bitai_LineEdit = QLineEdit()
+        self.uzk_laikas_Label = QLabel("Encryption time: ")
+        self.uzk_laikas_tikras_Label = QLabel("(sec)")
+        self.uzk_text_plain_QPlainTextEdit = QPlainTextEdit()
+        self.uzk_text_crypt_QPlainTextEdit = QPlainTextEdit()
+        self.uzk_text_crypt_QPlainTextEdit.setReadOnly(True)
+        
+        self.dek_uzkuoduoti_PushButton = QPushButton("Decrypt")
+        self.dek_raktas_Label = QLabel("Key: ")
+        self.dek_raktas_LineEdit = QLineEdit()
+        self.dek_bitai_Label = QLabel("Bits: ")
+        self.dek_bitai_LineEdit = QLineEdit()
+        self.dek_laikas_Label = QLabel("Decryption time: ")
+        self.dek_laikas_tikras_Label = QLabel("(sec)")
+        self.dek_text_plain_QPlainTextEdit = QPlainTextEdit()
+        self.dek_text_crypt_QPlainTextEdit = QPlainTextEdit()
+        self.dek_text_crypt_QPlainTextEdit.setReadOnly(True)
+        
+        self.baigti_PushButton =  QPushButton("Quit")    
         
         open_file_grid = QGridLayout()
         open_file_grid.addWidget(self.open_file_PushButton, 1, 0)
