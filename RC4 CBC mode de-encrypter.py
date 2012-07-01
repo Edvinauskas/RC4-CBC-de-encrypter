@@ -89,7 +89,7 @@ class lab3(QWidget):
         self.connect(self.baigti_PushButton, SIGNAL('clicked()'), self.baigti_darba)
 
     def atidaryti_faila(self):
-        failo_pav = QFileDialog.getOpenFileName(self, 'Atidaryti faila', '.')
+        failo_pav = QFileDialog.getOpenFileName(self, 'Open File', '.')
         self.failo_pavadinimas_Label.setText(failo_pav)
         f_atidaryti = open(failo_pav) 
         tekstas = f_atidaryti.read()
@@ -126,39 +126,39 @@ class lab3(QWidget):
             self.dek_text_crypt_QPlainTextEdit.setPlainText(str(dekuoduotas_tekstas))
             
     def klaida(self):
-        QMessageBox.critical(self, "Klaida!" , "Neteisingai ivesti parametrai!", QMessageBox.Ok)
+        QMessageBox.critical(self, "Something has gone terribly terribly wrong! :(", QMessageBox.Ok)
     
     def baigti_darba(self):
         sys.exit()
         
     def GUI(self):
-        self.atidaryti_teksta = QPushButton("Atidaryti teksta")
+        self.atidaryti_teksta = QPushButton("Open File")
         self.atidaryti_teksta.setFixedWidth(120)
-        self.failo_pavadinimas_Label = QLabel("(failas)")
+        self.failo_pavadinimas_Label = QLabel("(File Name)")
         
-        self.uzk_uzkuoduoti_PushButton = QPushButton("Uzkuoduoti")
-        self.uzk_raktas_Label = QLabel("Raktas: ")
+        self.uzk_uzkuoduoti_PushButton = QPushButton("Encrypt")
+        self.uzk_raktas_Label = QLabel("Key: ")
         self.uzk_raktas_LineEdit = QLineEdit()
-        self.uzk_bitai_Label = QLabel("Bitai: ")
+        self.uzk_bitai_Label = QLabel("Bits: ")
         self.uzk_bitai_LineEdit = QLineEdit()
-        self.uzk_laikas_Label = QLabel("Laikas uzk. sek.: ")
-        self.uzk_laikas_tikras_Label = QLabel("(laikas)")
+        self.uzk_laikas_Label = QLabel("Encryption time: ")
+        self.uzk_laikas_tikras_Label = QLabel("(sec)")
         self.uzk_text_plain_QPlainTextEdit = QPlainTextEdit()
         self.uzk_text_crypt_QPlainTextEdit = QPlainTextEdit()
         self.uzk_text_crypt_QPlainTextEdit.setReadOnly(True)
         
-        self.dek_uzkuoduoti_PushButton = QPushButton("Dekuoduoti")
-        self.dek_raktas_Label = QLabel("Raktas: ")
+        self.dek_uzkuoduoti_PushButton = QPushButton("Decrypt")
+        self.dek_raktas_Label = QLabel("Key: ")
         self.dek_raktas_LineEdit = QLineEdit()
-        self.dek_bitai_Label = QLabel("Bitai: ")
+        self.dek_bitai_Label = QLabel("Bits: ")
         self.dek_bitai_LineEdit = QLineEdit()
-        self.dek_laikas_Label = QLabel("Laikas dek. sek.: ")
-        self.dek_laikas_tikras_Label = QLabel("(laikas)")
+        self.dek_laikas_Label = QLabel("Decryption time: ")
+        self.dek_laikas_tikras_Label = QLabel("(sec)")
         self.dek_text_plain_QPlainTextEdit = QPlainTextEdit()
         self.dek_text_crypt_QPlainTextEdit = QPlainTextEdit()
         self.dek_text_crypt_QPlainTextEdit.setReadOnly(True)
         
-        self.baigti_PushButton =  QPushButton("Baigti darba")    
+        self.baigti_PushButton =  QPushButton("Quit")    
         
         atidaryti_faila_Grid = QGridLayout()
         atidaryti_faila_Grid.addWidget(self.atidaryti_teksta, 1, 0)
@@ -197,7 +197,7 @@ class lab3(QWidget):
         self.vbox.addWidget(self.baigti_PushButton)
         
         self.setLayout(self.vbox)
-        self.setWindowTitle("Lab 3 - RC4 - CBC")
+        self.setWindowTitle("RC4 CBC mode de-encrypter")
         self.setFixedSize(900, 700)    
 
 if __name__ == "__main__":
